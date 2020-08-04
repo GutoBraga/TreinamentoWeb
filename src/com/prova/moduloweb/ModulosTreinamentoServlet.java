@@ -26,7 +26,13 @@ public class ModulosTreinamentoServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		ModuloService service = new ModuloService();
-		List<Modulo> listaModulos = service.consultarModulos();
+		List<Modulo> listaModulos = null;
+		try {
+			listaModulos = service.consultarModulos();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		req.setAttribute("modulos", listaModulos);
 		
